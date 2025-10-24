@@ -16,7 +16,7 @@
 #define SEM_EMPTY "/sem_empty"
 #define SEM_FULL  "/sem_full"
 #define SEM_MUTEX "/sem_mutex"
-#define ITERATIONS 20
+#define ITERATIONS 25
 
 // Creating Table type
   typedef struct {
