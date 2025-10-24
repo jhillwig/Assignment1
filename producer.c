@@ -15,7 +15,7 @@
   #include <string.h>
 
 // 2 items allowed to be on table at a given moment
-//Defining Shared memory name (the table) and the 3 semaphone patterns
+// Defining Shared memory name (the table) and the 3 semaphone patterns
   #define SHM_NAME "/shm_table"
   #define SEM_EMPTY "/sem_empty"
   #define SEM_FULL  "/sem_full"
@@ -61,9 +61,27 @@
     running = 0;
   }
 
-// Closes semaphores and unlinks shared resources
+// Unmaping/Unlinking and Closing(tables/semaphores)
   void cleanup() {
-  
+    // Printing cleaning messsage  
+      printf("\n[Producer]: Cleaning up...\n");
+
+    // Unmapping/Closing table
+      munmap(table, sizeof(Table));
+      close(shm_fd);
+
+    // Closing semaphores
+      sem_close(empty);
+      sem_close(full);
+      sem_close(mutex);
+
+    // Unlinking semaphores
+      sem_unlink(SEM_EMPTY);
+      sem_unlink(SEM_FULL);
+      sem_unlink(SEM_MUTEX);
+      sem_Unlink(SHM_NAME);
+
+      printf("[Producer]: Exiting cleanly...\n");
   }
 
 
