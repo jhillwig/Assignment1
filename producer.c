@@ -57,7 +57,7 @@
 
         // Putting item onto table
           table->buffer[table->in] = item;
-          printf("[Producer]: Produced %d at position %d\n", item, table->in);
+          printf("\n[Producer]: Produced %d at position %d\n", item, table->in);
           table->in = (table->in + 1) % TABLE_SIZE;
 
         // Releasing mutex lock for a new process and signals a new spot is open (Increment for semaphores)
