@@ -1,50 +1,42 @@
 // producer.c / producer.cpp
 // Operating Systems Fall 2025
 // Josh Hillwig
-// Explain: 
 
 // Dependencies 
-  #include <stdio.h>
-  #include <stdlib.h>
-  #include <unistd.h>
-  #include <fcntl.h>
-  #include <signal.h>
-  #include <time.h>
-  #include <sys/mman.h>
-  #include <semaphore.h>
-  #include <string.h>
-
-// 2 items allowed to be on table at a given moment
-// Defining Shared memory name (the table) and the 3 semaphone patterns
-  #define SHM_NAME "/shm_table"
-  #define SEM_EMPTY "/sem_empty"
-  #define SEM_FULL  "/sem_full"
-  #define SEM_MUTEX "/sem_mutex"
-  #define TABLE_SIZE 2  
-
-// Creating Table type
-  typedef struct {
-    int buffer[TABLE_SIZE];
-    int in;
-    int out;
-  } Table;
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <time.h>
+#include <sys/mman.h>
+#include <semaphore.h>
+#include "sharedMemTable.h"
 
 // Defining the table and some variables for shared memory
   static Table *table;
   static int shm_fd;
   static sem_t *empty, *full, *mutex;
-  static volatile sig_atomic_t running = 1;
+  static volatile sig_atomic_t s_running = 1;
 
 // Pre-defining helper functions
-  int genItem();
+  int addItem();
   void handleQuit(int);
   void cleanup();
 
 // Main
   int main() {
-    //a
+    // Registering signal handler and randomization for items
       signal(SIGINT, handleQuit);
       srand(time(NULL));
+
+    // Setting up Shared Memory
+      
+    // Intialization of Semaphores
+
+    // Printing Process Initiation
+
+    // While loop for iterations
 
     // Run cleanup() at the end of main then return 0
       cleanup();
@@ -52,13 +44,13 @@
   }
 
 // Makes sure a random integer between 0 and 999 is returned
-  int genItem() {
+  int addItem() {
     return (rand() % 1000);
   }
 
 // Handeler for Quit
-  void handleQuit(int sig) {
-    running = 0;
+  void handleQuit(int signal) {
+    s_running = 0;
   }
 
 // Unmaping/Unlinking and Closing(tables/semaphores)
