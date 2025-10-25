@@ -18,9 +18,9 @@ gcc consumer.cpp  -pthread -lrt -o consumer
 
 ## Program Description
 ### Producer & Consumer
-`producer` generates the random integers from 0 to 999 simulating the items on the table. After running it a number of times ('ITERATIONS' in 'sharedTable.h'), the program will exit and call 'cleanup'. This unmaps the table, unlinks the semaphores, and then closes them.
+`producer` generates the random integers from 0 to 999 simulating the items on the table. After running it a number of times (`ITERATIONS` in `sharedTable.h`), the program will exit and call `cleanup`. This unmaps the table, unlinks the semaphores, and then closes them.
 
-`consumer` consumes the random items put on the table by `producer`. After running it a number of times ('ITERATIONS' in 'sharedTable.h'), the program will exit and call 'cleanup'. This unmaps the table and then closes the semaphores and the table.
+`consumer` consumes the random items put on the table by `producer`. After running it a number of times (`ITERATIONS` in `sharedTable.h`), the program will exit and call `cleanup`. This unmaps the table and then closes the semaphores and the table.
 
 
 ### Expected Output
