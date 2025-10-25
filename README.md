@@ -25,4 +25,4 @@ gcc consumer.cpp  -pthread -lrt -o consumer
 
 ### Expected Output
 Expected output should look something like this
-![Expected Output](<img width="929" height="639" alt="image" src="https://github.com/user-attachments/assets/30d90ff7-fc61-4ffa-a425-3fa0f837a95c" />)
+![Expected Output](<img width="854" height="396" alt="Screenshot 2025-10-24 194607" src="https://github.com/user-attachments/assets/b81eb8e0-7e20-4252-891f-78012a448b30" />)
